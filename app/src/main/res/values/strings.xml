@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Network Logging Utility Demo App</string>
+    <string name="app_name">Remote Logging Utility Demo App</string>
+    <string name="app_purpose_text">The purpose of this app is to demonstrate a simple <b>remote logging utility</b> capable of communicating important app data to a server, either at regular intervals or on demand.</string>
 </resources>

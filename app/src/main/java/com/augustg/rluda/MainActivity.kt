@@ -1,4 +1,4 @@
-package com.augustg.nluda
+package com.augustg.rluda
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
