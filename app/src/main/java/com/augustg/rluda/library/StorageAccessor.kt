@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
  */
 object StorageAccessor {
 
-    private var isInitialized = false
+    private var initialized = false
 
     private lateinit var logDao: LogDao
 
@@ -30,7 +30,7 @@ object StorageAccessor {
     fun initialize(context: Context) {
         logDao = LogDatabase.getInstance(context).logDao()
         scope = CoroutineScope(Dispatchers.IO)
-        isInitialized = true
+        initialized = true
     }
 
     /**
@@ -41,7 +41,7 @@ object StorageAccessor {
      * @throws Exception if StorageAccessor has not been initialized
      */
     fun storeLog(message: String) {
-        if (!isInitialized) throw Exception("StorageAccessor must be initialized before use")
+        if (!initialized) throw Exception("StorageAccessor must be initialized before use")
 
         scope.launch {
             logDao.insertLog(
@@ -63,7 +63,7 @@ object StorageAccessor {
      * @return a list of [Log] data objects
      */
     fun pullLogs(since: Long = 0, andThen: (logs: List<Log>) -> Unit) {
-        if (!isInitialized) throw Exception("StorageAccessor must be initialized before use")
+        if (!initialized) throw Exception("StorageAccessor must be initialized before use")
 
         scope.launch {
             val logs = when (since) {
@@ -87,7 +87,7 @@ object StorageAccessor {
      * Clears all Logs from the local storage
      */
     fun clearLogs() {
-        if (!isInitialized) throw Exception("StorageAccessor must be initialized before use")
+        if (!initialized) throw Exception("StorageAccessor must be initialized before use")
 
         scope.launch {
             logDao.deleteAllLogs()
