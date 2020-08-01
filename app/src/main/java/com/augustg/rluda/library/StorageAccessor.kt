@@ -10,9 +10,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * A repository wrapping the full local storage of Logs
+ * Repository wrapping the full local storage of Logs
  *
- * @throws Exception if used without being initialized in [initialize]
+ * @throws Exception if used before calling [initialize]
  */
 object StorageAccessor {
 
@@ -23,9 +23,9 @@ object StorageAccessor {
     private lateinit var scope: CoroutineScope
 
     /**
-     * [StorageAccessor] must be initialized with a Context before it can be used
+     * [StorageAccessor] must be initialized before it can be used
      *
-     * @param context can be any context in the application
+     * @param context
      */
     fun initialize(context: Context) {
         logDao = LogDatabase.getInstance(context).logDao()
@@ -34,10 +34,9 @@ object StorageAccessor {
     }
 
     /**
-     * Stores a Log message into the local storage
+     * Stores a Log message in the local storage
      *
      * @param message
-     *
      * @throws Exception if StorageAccessor has not been initialized
      */
     fun storeLog(message: String) {
@@ -61,6 +60,7 @@ object StorageAccessor {
      * in milliseconds since midnight, January 1, 1970 UTC
      * @param andThen some task to perform on the main thread
      * @return a list of [Log] data objects
+     * @throws Exception if StorageAccessor has not been initialized
      */
     fun pullLogs(since: Long = 0, andThen: (logs: List<Log>) -> Unit) {
         if (!initialized) throw Exception("StorageAccessor must be initialized before use")
@@ -85,6 +85,8 @@ object StorageAccessor {
 
     /**
      * Clears all Logs from the local storage
+     *
+     * @throws Exception if StorageAccessor has not been initialized
      */
     fun clearLogs() {
         if (!initialized) throw Exception("StorageAccessor must be initialized before use")
