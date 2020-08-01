@@ -8,9 +8,10 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/appPurpose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/app_purpose_background"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,10 +22,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:text="@string/app_purpose_text"
             android:textColor="@android:color/white"
-            android:text="@string/app_purpose_text"/>
+            android:textSize="30sp" />
     </LinearLayout>
 
-
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:background="@drawable/start_button"
+        android:text="@string/start_button_text"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/appPurpose"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
