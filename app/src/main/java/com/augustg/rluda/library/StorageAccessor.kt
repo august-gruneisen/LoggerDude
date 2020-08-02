@@ -63,7 +63,7 @@ object StorageAccessor {
      * @return a list of [Log] data objects
      * @throws Exception if StorageAccessor has not been initialized
      */
-    fun pullLogs(since: Long = 0, andThen: (logs: List<Log>) -> Unit) {
+    fun withLogs(since: Long = 0, andThen: (logs: List<Log>) -> Unit) {
         if (!initialized) throw Exception("StorageAccessor must be initialized before use")
 
         scope.launch {
