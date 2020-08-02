@@ -9,5 +9,5 @@
         android:id="@+id/appPurposeFragment"
         android:name="com.augustg.rluda.AppPurposeFragment"
         android:label="AppPurposeFragment"
-        tools:layout="@layout/fragment_app_purpose"/>
+        tools:layout="@layout/fragment_app_purpose" />
 </navigation>
