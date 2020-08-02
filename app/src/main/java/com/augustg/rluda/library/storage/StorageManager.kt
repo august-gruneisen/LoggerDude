@@ -2,6 +2,7 @@ package com.augustg.rluda.library.storage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import com.augustg.rluda.library.FormattedLog
 import com.augustg.rluda.library.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +12,7 @@ import kotlinx.coroutines.withContext
 /**
  * Repository wrapping [LogDatabase]
  *
- * @param logDao DAO for accessing local storage
+ * @property logDao DAO for accessing local storage
  */
 class StorageManager(private val logDao: LogDao) {
 
@@ -34,12 +35,12 @@ class StorageManager(private val logDao: LogDao) {
     }
 
     /**
-     * Pulls a list of Logs and does something with them on the main thread
+     * Pulls a list of formatted Logs and does something with them on the main thread
      *
      * @param since (optional) starts from the specified time in millis since January 1, 1970 UTC
-     * @param doThis some task to perform with the Logs
+     * @param doThis some task to perform with the formatted Logs
      */
-    fun pullLogs(since: Long = 0, doThis: (logs: List<Log>) -> Unit) {
+    fun pullLogs(since: Long = 0, doThis: (logs: List<FormattedLog>) -> Unit) {
         scope.launch {
             val logs = when (since) {
                 0.toLong() -> {
@@ -48,8 +49,10 @@ class StorageManager(private val logDao: LogDao) {
                 else -> {
                     logDao.queryLogsSince(since)
                 }
-            }.map { entity ->
-                Log(entity.time, entity.message)
+            }.map {
+                FormattedLog.format(
+                    Log(it.time, it.message)
+                )
             }
 
             withContext(Dispatchers.Main) {
@@ -59,13 +62,17 @@ class StorageManager(private val logDao: LogDao) {
     }
 
     /**
-     * Returns an observable LiveData stream of Logs
+     * Returns an observable LiveData stream of formatted Logs
      *
-     * @return LiveData list of stored logs
+     * @return LiveData list of formatted Logs
      */
-    fun observeLogs(): LiveData<List<Log>> {
+    fun observeLogs(): LiveData<List<FormattedLog>> {
         return Transformations.map(logDao.getLogsLiveData()) { entities ->
-            entities.map { Log(it.time, it.message) }
+            entities.map {
+                FormattedLog.format(
+                    Log(it.time, it.message)
+                )
+            }
         }
     }
 

@@ -67,7 +67,7 @@ object LoggerDude {
      * @return LiveData list of Logs
      * @throws Exception if used before initialization
      */
-    fun live(): LiveData<List<Log>> {
+    fun live(): LiveData<List<FormattedLog>> {
         if (!initialized) throw Exception("LoggerDude must be initialized before use")
 
         return storageManager.observeLogs()

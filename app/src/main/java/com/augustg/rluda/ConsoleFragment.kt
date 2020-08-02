@@ -1,6 +1,7 @@
 package com.augustg.rluda
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.augustg.rluda.databinding.FragmentConsoleBinding
-import com.augustg.rluda.library.Log
+import com.augustg.rluda.library.FormattedLog
 import com.augustg.rluda.library.LoggerDude
 import com.augustg.rluda.util.toggleVisibility
 
@@ -43,6 +44,8 @@ class ConsoleFragment : Fragment() {
 
         binding.clearAllButton.setOnClickListener {
             LoggerDude.clear()
+            SystemClock.sleep(50)
+            LoggerDude.log("Cleared Logs")
         }
 
         LoggerDude.live().observe(viewLifecycleOwner, Observer { logs ->
@@ -50,13 +53,11 @@ class ConsoleFragment : Fragment() {
         })
     }
 
-    private fun formatAndDisplay(logs: List<Log>) {
-        binding.consoleText.text = ""
-        binding.consoleText.append(
-            logs.joinToString("\n") { log ->
-                "${log.time.toString().substring(11)}: ${log.message}"
-            }
-        )
+    private fun formatAndDisplay(logs: List<FormattedLog>) {
+        binding.consoleText.apply {
+            text = ""
+            append(logs.joinToString("\n"))
+        }
     }
 
     private fun toggleConsoleVisibility() {
