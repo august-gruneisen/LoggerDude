@@ -9,9 +9,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Repository wrapping the [LogDatabase]
+ * Repository wrapping [LogDatabase]
  *
- * @param logDao Data Access Object for accessing local storage
+ * @param logDao DAO for accessing local storage
  */
 class StorageManager(private val logDao: LogDao) {
 
@@ -36,12 +36,10 @@ class StorageManager(private val logDao: LogDao) {
     /**
      * Pulls a list of Logs and does something with them on the main thread
      *
-     * @param since (optional) will pull only Logs starting from the specified time
-     * in milliseconds since midnight, January 1, 1970 UTC
+     * @param since (optional) starts from the specified time in millis since January 1, 1970 UTC
      * @param doThis some task to perform with the Logs
-     * @return a list of [Log] data objects
      */
-    fun withLogs(since: Long = 0, doThis: (logs: List<Log>) -> Unit) {
+    fun pullLogs(since: Long = 0, doThis: (logs: List<Log>) -> Unit) {
         scope.launch {
             val logs = when (since) {
                 0.toLong() -> {
@@ -61,9 +59,9 @@ class StorageManager(private val logDao: LogDao) {
     }
 
     /**
-     * Returns an observable LiveData list of Logs
+     * Returns an observable LiveData stream of Logs
      *
-     * @return LiveData list of locally stored logs
+     * @return LiveData list of stored logs
      */
     fun observeLogs(): LiveData<List<Log>> {
         return Transformations.map(logDao.getLogsLiveData()) { entities ->
