@@ -3,7 +3,7 @@ package com.augustg.rluda
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.augustg.rluda.databinding.ActivityMainBinding
-import com.augustg.rluda.library.StorageAccessor
+import com.augustg.rluda.library.LoggerDude
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize LoggerDude
-        StorageAccessor.initialize(applicationContext)
-        StorageAccessor.clearLogs() // clear logs on app startup
+        LoggerDude.initialize(applicationContext)
     }
 }

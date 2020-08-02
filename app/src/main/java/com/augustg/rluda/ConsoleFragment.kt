@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.augustg.rluda.databinding.FragmentConsoleBinding
 import com.augustg.rluda.library.Log
-import com.augustg.rluda.library.StorageAccessor
+import com.augustg.rluda.library.LoggerDude
 import com.augustg.rluda.util.toggleVisibility
 
 class ConsoleFragment : Fragment() {
@@ -33,7 +33,7 @@ class ConsoleFragment : Fragment() {
         binding.consoleText.apply {
             movementMethod = ScrollingMovementMethod()
             setOnClickListener {
-                StorageAccessor.storeLog("Clicked on Log Console")
+                LoggerDude.log("Clicked on Log Console")
             }
         }
 
@@ -42,11 +42,10 @@ class ConsoleFragment : Fragment() {
         }
 
         binding.clearAllButton.setOnClickListener {
-            StorageAccessor.clearLogs()
-            StorageAccessor.storeLog("Cleared Logs")
+            LoggerDude.clear()
         }
 
-        StorageAccessor.observeLogs().observe(viewLifecycleOwner, Observer { logs ->
+        LoggerDude.live().observe(viewLifecycleOwner, Observer { logs ->
             formatAndDisplay(logs)
         })
     }
@@ -63,10 +62,10 @@ class ConsoleFragment : Fragment() {
     private fun toggleConsoleVisibility() {
         if (open) {
             open = false
-            StorageAccessor.storeLog("Closed Log Console")
+            LoggerDude.log("Closed Log Console")
         } else {
             open = true
-            StorageAccessor.storeLog("Opened Log Console")
+            LoggerDude.log("Opened Log Console")
         }
         binding.consoleText.toggleVisibility()
     }

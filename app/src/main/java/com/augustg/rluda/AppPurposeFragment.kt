@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.augustg.rluda.databinding.FragmentAppPurposeBinding
-import com.augustg.rluda.library.StorageAccessor
+import com.augustg.rluda.library.LoggerDude
 import com.augustg.rluda.util.pulse
 
 class AppPurposeFragment : Fragment() {
@@ -26,7 +26,7 @@ class AppPurposeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         binding.startButton.setOnClickListener {
-            StorageAccessor.storeLog("Try It Out! clicked")
+            LoggerDude.log("Try It Out! clicked")
         }
 
         binding.startButton.pulse(
