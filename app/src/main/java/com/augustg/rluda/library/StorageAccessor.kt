@@ -1,6 +1,8 @@
 package com.augustg.rluda.library
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.augustg.rluda.library.storage.LogDao
 import com.augustg.rluda.library.storage.LogDatabase
 import com.augustg.rluda.library.storage.LogEntity
@@ -84,7 +86,21 @@ object StorageAccessor {
     }
 
     /**
-     * Clears all Logs from the local storage
+     * Returns an observable LiveData list of Logs from local storage
+     *
+     * @return LiveData list of locally stored logs
+     * @throws Exception if StorageAccessor has not been initialized
+     */
+    fun observeLogs(): LiveData<List<Log>> {
+        if (!initialized) throw Exception("StorageAccessor must be initialized before use")
+
+        return Transformations.map(logDao.getLogsLiveData()) { entities ->
+            entities.map { Log(it.time, it.message) }
+        }
+    }
+
+    /**
+     * Clears all Logs from local storage
      *
      * @throws Exception if StorageAccessor has not been initialized
      */

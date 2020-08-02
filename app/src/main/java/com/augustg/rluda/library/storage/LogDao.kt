@@ -1,5 +1,6 @@
 package com.augustg.rluda.library.storage
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -37,6 +38,14 @@ interface LogDao {
      */
     @Query("SELECT * FROM log_table")
     suspend fun queryAllLogs(): List<LogEntity>
+
+    /**
+     * Gets all locally stored Logs as an observable LiveData
+     *
+     * @return a LiveData list of all Logs
+     */
+    @Query("SELECT * FROM log_table")
+    fun getLogsLiveData(): LiveData<List<LogEntity>>
 
     /**
      * Deletes all locally stored Logs
