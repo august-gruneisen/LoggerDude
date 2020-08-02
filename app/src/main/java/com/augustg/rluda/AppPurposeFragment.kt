@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.augustg.rluda.databinding.FragmentAppPurposeBinding
+import com.augustg.rluda.library.StorageAccessor
 import com.augustg.rluda.util.pulse
 
 class AppPurposeFragment : Fragment() {
@@ -26,7 +26,7 @@ class AppPurposeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         binding.startButton.setOnClickListener {
-            findNavController().navigate(AppPurposeFragmentDirections.toConsoleFragment())
+            StorageAccessor.storeLog("Try It Out! clicked")
         }
 
         binding.startButton.pulse(
