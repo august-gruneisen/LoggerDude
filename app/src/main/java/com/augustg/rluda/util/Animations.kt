@@ -89,6 +89,6 @@ fun View.pulse(
  * Toggles the visibility of a View
  */
 fun View.toggleVisibility() {
-    if (this.visibility == View.VISIBLE) this.visibility = View.GONE
-    else this.visibility = View.VISIBLE
+    this.visibility = if (this.visibility == View.VISIBLE) View.GONE
+    else View.VISIBLE
 }
