@@ -23,7 +23,7 @@ interface LogDao {
     fun insertLog(logEntity: LogEntity)
 
     /**
-     * Queries [LogDatabase] for all of the Logs since a given time
+     * Queries [LogDatabase] for all Logs since a given time
      *
      * @param time milliseconds since midnight, January 1, 1970 UTC
      * @return a list of Logs since the time specified
@@ -32,7 +32,7 @@ interface LogDao {
     suspend fun queryLogsSince(time: Long): List<LogEntity>
 
     /**
-     * Queries [LogDatabase] for all of the locally stored Logs
+     * Queries [LogDatabase] for all locally stored Logs
      *
      * @return a list of all stored Logs
      */

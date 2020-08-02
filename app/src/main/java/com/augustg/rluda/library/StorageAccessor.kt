@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Repository wrapping the full local storage of Logs
+ * Repository wrapping the local storage of Logs
  *
  * @throws Exception if used before calling [initialize]
  */
@@ -36,7 +36,7 @@ object StorageAccessor {
     }
 
     /**
-     * Stores a Log message in the local storage
+     * Stores a Log message locally
      *
      * @param message
      * @throws Exception if StorageAccessor has not been initialized
@@ -55,12 +55,11 @@ object StorageAccessor {
     }
 
     /**
-     * Pulls a list of Logs from the local storage and then
-     * does something with them on the main thread
+     * Pulls a list of Logs from local storage and then does something with them on the main thread
      *
-     * @param since (optional) will pull  only the Logs starting from the specified time
+     * @param since (optional) will pull only Logs starting from the specified time
      * in milliseconds since midnight, January 1, 1970 UTC
-     * @param andThen some task to perform on the main thread
+     * @param andThen some task to perform with the Logs on the main thread
      * @return a list of [Log] data objects
      * @throws Exception if StorageAccessor has not been initialized
      */
