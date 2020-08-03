@@ -60,9 +60,9 @@ object LoggerDude {
      *
      * @param doThis task to perform
      */
-    fun withLogs(doThis: () -> Unit) {
+    fun withLogs(doThis: (logs: List<FormattedLog>) -> Unit) {
         verifyInitialization()
-        storageManager.pullLogs { doThis.invoke() }
+        storageManager.pullLogs { doThis(it) }
     }
 
     /**
