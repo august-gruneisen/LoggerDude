@@ -8,6 +8,7 @@ import com.augustg.rluda.library.storage.StorageManager
 
 /**
  * Logger Dude API
+ * Initialize with a Context before using
  *
  * @throws Exception if used before calling [initialize]
  */
@@ -16,6 +17,15 @@ object LoggerDude {
     private var initialized = false
 
     private lateinit var storageManager: StorageManager
+
+    /**
+     * Verifies that LoggerDude has been initialized
+     *
+     * @throws Exception if used before initialization
+     */
+    private fun verifyInitialization() {
+        if (!initialized) throw Exception("LoggerDude must be initialized before use")
+    }
 
     /**
      * Initializes object by creating a [StorageManager] to access local storage
@@ -29,12 +39,9 @@ object LoggerDude {
 
     /**
      * Clears all stored Logs
-     *
-     * @throws Exception if used before initialization
      */
     fun clear() {
-        if (!initialized) throw Exception("LoggerDude must be initialized before use")
-
+        verifyInitialization()
         storageManager.clearLogs()
     }
 
@@ -42,11 +49,9 @@ object LoggerDude {
      * Stores a Log message
      *
      * @param message
-     * @throws Exception if used before initialization
      */
     fun log(message: String) {
-        if (!initialized) throw Exception("LoggerDude must be initialized before use")
-
+        verifyInitialization()
         storageManager.storeLog(message)
     }
 
@@ -54,11 +59,9 @@ object LoggerDude {
      * Does something with the stored Logs
      *
      * @param doThis task to perform
-     * @throws Exception if used before initialization
      */
     fun withLogs(doThis: () -> Unit) {
-        if (!initialized) throw Exception("LoggerDude must be initialized before use")
-
+        verifyInitialization()
         storageManager.pullLogs { doThis.invoke() }
     }
 
@@ -66,11 +69,9 @@ object LoggerDude {
      * Gets Logs as a LiveData stream
      *
      * @return LiveData list of Logs
-     * @throws Exception if used before initialization
      */
     fun live(): LiveData<List<FormattedLog>> {
-        if (!initialized) throw Exception("LoggerDude must be initialized before use")
-
+        verifyInitialization()
         return storageManager.observeLogs()
     }
 }
