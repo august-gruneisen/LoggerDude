@@ -2,6 +2,7 @@ package com.augustg.rluda.library
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import com.augustg.rluda.library.logs.FormattedLog
 import com.augustg.rluda.library.storage.LogDatabase
 import com.augustg.rluda.library.storage.StorageManager
 

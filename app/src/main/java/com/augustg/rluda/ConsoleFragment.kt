@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.augustg.rluda.databinding.FragmentConsoleBinding
-import com.augustg.rluda.library.FormattedLog
+import com.augustg.rluda.library.logs.FormattedLog
 import com.augustg.rluda.library.LoggerDude
 import com.augustg.rluda.util.toggleVisibility
 

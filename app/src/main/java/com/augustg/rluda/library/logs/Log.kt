@@ -1,4 +1,4 @@
-package com.augustg.rluda.library
+package com.augustg.rluda.library.logs
 
 /**
  * Data representation of a Log

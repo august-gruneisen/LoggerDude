@@ -2,8 +2,8 @@ package com.augustg.rluda.library.storage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.augustg.rluda.library.FormattedLog
-import com.augustg.rluda.library.Log
+import com.augustg.rluda.library.logs.FormattedLog
+import com.augustg.rluda.library.logs.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

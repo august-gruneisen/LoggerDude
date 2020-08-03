@@ -1,10 +1,10 @@
-package com.augustg.rluda.library
+package com.augustg.rluda.library.logs
 
 import java.text.DateFormat
 import java.util.*
 
 /**
- * Class representing a formatted Log
+ * Class representing a formatted [Log]
  *
  * @property timestamp
  * @property message
