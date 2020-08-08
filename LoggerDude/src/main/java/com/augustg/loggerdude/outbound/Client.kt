@@ -1,6 +1,6 @@
-package com.augustg.rluda.library.outbound
+package com.augustg.loggerdude.outbound
 
-import com.augustg.rluda.library.logs.FormattedLog
+import com.augustg.loggerdude.logs.FormattedLog
 import io.ktor.client.HttpClient
 import io.ktor.client.features.DefaultRequest
 import io.ktor.client.features.json.GsonSerializer

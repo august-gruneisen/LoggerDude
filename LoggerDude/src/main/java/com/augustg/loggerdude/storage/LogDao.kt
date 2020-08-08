@@ -1,4 +1,4 @@
-package com.augustg.rluda.library.storage
+package com.augustg.loggerdude.storage
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

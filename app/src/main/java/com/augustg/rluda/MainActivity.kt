@@ -2,8 +2,8 @@ package com.augustg.rluda
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.augustg.loggerdude.LoggerDude
 import com.augustg.rluda.databinding.ActivityMainBinding
-import com.augustg.rluda.library.LoggerDude
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.augustg.rluda.library.outbound
+package com.augustg.loggerdude.outbound
 
 /**
  * Interface for handling the network response of outgoing Logs

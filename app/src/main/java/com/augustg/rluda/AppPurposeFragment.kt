@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.augustg.loggerdude.LoggerDude
 import com.augustg.rluda.databinding.FragmentAppPurposeBinding
-import com.augustg.rluda.library.LoggerDude
 import com.augustg.rluda.util.pulse
 
 class AppPurposeFragment : Fragment() {

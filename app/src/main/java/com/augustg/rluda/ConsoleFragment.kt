@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.ObservableBoolean
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.augustg.loggerdude.LoggerDude
+import com.augustg.loggerdude.logs.FormattedLog
 import com.augustg.rluda.databinding.FragmentConsoleBinding
-import com.augustg.rluda.library.logs.FormattedLog
-import com.augustg.rluda.library.LoggerDude
 
 class ConsoleFragment : Fragment() {
 

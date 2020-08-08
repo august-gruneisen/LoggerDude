@@ -1,12 +1,12 @@
-package com.augustg.rluda.library
+package com.augustg.loggerdude
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.augustg.rluda.library.logs.FormattedLog
-import com.augustg.rluda.library.outbound.NetworkCallback
-import com.augustg.rluda.library.outbound.NetworkManager
-import com.augustg.rluda.library.storage.LogDatabase
-import com.augustg.rluda.library.storage.StorageManager
+import com.augustg.loggerdude.logs.FormattedLog
+import com.augustg.loggerdude.outbound.NetworkCallback
+import com.augustg.loggerdude.outbound.NetworkManager
+import com.augustg.loggerdude.storage.LogDatabase
+import com.augustg.loggerdude.storage.StorageManager
 
 /**
  * LoggerDude API

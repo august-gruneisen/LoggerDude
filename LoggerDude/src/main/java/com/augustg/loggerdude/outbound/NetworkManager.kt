@@ -1,6 +1,6 @@
-package com.augustg.rluda.library.outbound
+package com.augustg.loggerdude.outbound
 
-import com.augustg.rluda.library.logs.FormattedLog
+import com.augustg.loggerdude.logs.FormattedLog
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
