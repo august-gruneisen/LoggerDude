@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize LoggerDude
-        LoggerDude.initialize(applicationContext)
+        LoggerDude.initialize(
+            context = applicationContext,
+            endpoint = "https://tomcat.creationgrowth.com/logger-dude/log/"
+        )
     }
 }

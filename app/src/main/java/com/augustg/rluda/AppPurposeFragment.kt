@@ -28,11 +28,9 @@ class AppPurposeFragment : Fragment() {
         binding.startButton.setOnClickListener {
             LoggerDude.log("Try It Out! clicked")
 
-            LoggerDude.withLogs { logs ->
-                logs.forEach {
-                    println(it.toString())
-                }
-            }
+            // post Logs
+            LoggerDude.log("Dumping Logs...")
+            LoggerDude.dump()
         }
 
         binding.startButton.pulse(
