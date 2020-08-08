@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion 29
@@ -27,6 +28,14 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+    dokkaHtml {
+        dokkaSourceSets {
+            create("main") {
+                noAndroidSdkLink = true
+            }
+        }
+    }
 }
 
 dependencies {
@@ -47,4 +56,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    // ktor
+    implementation "io.ktor:ktor-client-cio:$ktor_version"
+    implementation "io.ktor:ktor-client-gson:$ktor_version"
 }
