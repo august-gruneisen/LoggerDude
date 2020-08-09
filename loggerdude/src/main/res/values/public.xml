@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <public name="loggerdude" type="com.augustg.loggerdude.LoggerDude" />
-    <public name="loggerdude-log" type="com.augustg.loggerdude.logs.FormattedLog" />
-</resources>
