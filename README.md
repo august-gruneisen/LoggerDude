@@ -3,7 +3,7 @@
 Effortless remote logging in Android - saving baby kittens one-log-at-a-time!
 
 LoggerDude provides a safe way to track events in your app's lifecycle and view them remotely. 
-It requires minimal setup and works out of the box with a free open-source web portal. 
+It requires minimal setup and works out of the box with a free open-source [web portal][web portal]. 
 For greater control, devs can specify an API endpoint and reformat outgoing logs as needed.
 
 This tool makes it easy to add __production logging__ without exposing your app data :)
@@ -33,3 +33,5 @@ Useful for tracking/debugging:
 1.1 - Adds support for categorizing logs
 
 2.0 - Adds automatic server synchronization
+
+[web portal]: https://augustg.com/loggerdude

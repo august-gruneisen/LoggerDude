@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize LoggerDude
         LoggerDude.initialize(
             context = applicationContext,
-            endpoint = "https://tomcat.creationgrowth.com/logger-dude/log/"
+            endpoint = "https://augustg.com/loggerdude/log/"
         )
     }
 }
