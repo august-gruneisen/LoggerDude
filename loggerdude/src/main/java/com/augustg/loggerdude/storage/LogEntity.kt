@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "log_table")
 data class LogEntity(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long? = null,
     @ColumnInfo(name = "time") val time: Long,
     @ColumnInfo(name = "message") val message: String
 )
