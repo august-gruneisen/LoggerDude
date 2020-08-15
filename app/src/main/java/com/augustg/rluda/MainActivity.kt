@@ -19,5 +19,7 @@ class MainActivity : AppCompatActivity() {
             context = applicationContext,
             endpoint = "https://augustg.com/loggerdude/log/"
         )
+
+        LoggerDude.log("MainActivity.onCreate")
     }
 }

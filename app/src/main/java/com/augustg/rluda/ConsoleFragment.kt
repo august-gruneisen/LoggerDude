@@ -30,13 +30,14 @@ class ConsoleFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        LoggerDude.log("ConsoleFragment.onActivityCreated")
         binding.lifecycleOwner = viewLifecycleOwner
         binding.open = consoleOpen
 
         binding.consoleText.apply {
             movementMethod = ScrollingMovementMethod()
             setOnClickListener {
-                LoggerDude.log("Clicked on Log Console")
+                LoggerDude.log("Clicked on console")
             }
         }
 
@@ -47,7 +48,7 @@ class ConsoleFragment : Fragment() {
         binding.clearAllButton.setOnClickListener {
             LoggerDude.clear()
             SystemClock.sleep(50)
-            LoggerDude.log("Cleared Logs")
+            LoggerDude.log("Cleared logs")
         }
 
         LoggerDude.live().observe(viewLifecycleOwner, Observer { logs ->

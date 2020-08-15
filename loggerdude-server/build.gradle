@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
+    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+    id "war"
+}
+
+webAppDirName = 'webapp'
+
+sourceSets {
+    main.kotlin.srcDirs = [ 'src' ]
+    test.kotlin.srcDirs = [ 'test' ]
+    main.resources.srcDirs = [ 'resources' ]
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "io.ktor:ktor-server-servlet:$ktor_version"
+    implementation "io.ktor:ktor-server-tomcat:$ktor_version"
+    implementation "io.ktor:ktor-auth:$ktor_version"
+    implementation "io.ktor:ktor-server-sessions:$ktor_version"
+    implementation "io.ktor:ktor-html-builder:$ktor_version"
+    implementation "io.ktor:ktor-serialization:$ktor_version"
+
+    // freemarker
+    implementation "io.ktor:ktor-freemarker:$ktor_version"
+
+    // test
+    testCompile("io.ktor:ktor-server-test-host:$ktor_version")
+
+    // db
+    implementation 'org.litote.kmongo:kmongo:4.1.0'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

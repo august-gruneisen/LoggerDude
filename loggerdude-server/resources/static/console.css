@@ -1,0 +1,25 @@
+body {
+    background: black;
+    color: white;
+}
+
+#log-view {
+    display: inline-block;
+    background: black;
+    min-width: 30vw;
+    min-height: 50vh;
+    width: 40vw;
+    height: 50vh;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: auto;
+    resize: both;
+    border: solid white 4px;
+}
+
+#log-view p {
+    margin: 8px;
+    color: white;
+    font-family: "Lucida Console", Monaco, monospace;
+    white-space: pre-wrap;
+}

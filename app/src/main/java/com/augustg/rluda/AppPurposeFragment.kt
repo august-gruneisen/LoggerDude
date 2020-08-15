@@ -24,12 +24,13 @@ class AppPurposeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        LoggerDude.log("AppPurposeFragment.onActivityCreated")
 
         binding.startButton.setOnClickListener {
             LoggerDude.log("Try It Out! clicked")
 
             // post Logs
-            LoggerDude.log("Dumping Logs...")
+            LoggerDude.log("Dumping logs")
             LoggerDude.dump()
         }
 

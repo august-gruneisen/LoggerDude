@@ -20,7 +20,11 @@ class FormattedLog private constructor(
      * @return String Log
      */
     override fun toString(): String {
-        return "$timestamp: $message"
+        return "${simpleTimestamp()} $message"
+    }
+
+    private fun simpleTimestamp(): String {
+        return timestamp.substring(12, timestamp.length - 3)
     }
 
     /**
@@ -43,25 +47,6 @@ class FormattedLog private constructor(
                 timestamp = dateFormat.format(Date(log.time)),
                 message = log.message
             )
-        }
-
-        /**
-         * Formats a list of Logs
-         *
-         * @param logs
-         * @param dateFormat (optional) specified [DateFormat] for the timestamp
-         * @return list of formatted Logs
-         */
-        fun format(
-            logs: List<Log>,
-            dateFormat: DateFormat = DateFormat.getDateTimeInstance()
-        ): List<FormattedLog> {
-            return logs.map { log ->
-                FormattedLog(
-                    timestamp = dateFormat.format(Date(log.time)),
-                    message = log.message
-                )
-            }
         }
     }
 }
