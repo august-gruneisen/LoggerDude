@@ -17,7 +17,7 @@ Under the hood, LoggerDude stores data locally while your app is in use.
 The logs form a payload which gets dispatched to the provided API. 
 Data stored is only visible to your application. Nothing ever gets written to the console! 
 
-### Tools
+### Tools:
 [Room](https://developer.android.com/topic/libraries/architecture/room) for wrapping local storage  
 [Ktor](https://ktor.io/) as a client for network communication
 
@@ -28,7 +28,10 @@ Useful for tracking/debugging:
 - IoT comms events
 - Crash reports
 
-### Future Releases
+### Demo:
+<img src="demo-screenshot.png" width="800px"/>
+
+### Future Releases:
 
 1.1 - Adds support for categorizing logs
 
