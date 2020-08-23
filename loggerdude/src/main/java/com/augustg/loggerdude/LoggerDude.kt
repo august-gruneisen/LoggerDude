@@ -10,7 +10,7 @@ import com.augustg.loggerdude.storage.StorageManager
 
 /**
  * LoggerDude API
- * Initialize with a Context before using
+ * Call [initialize] with a Context before using
  *
  * @throws Exception if used before calling [initialize]
  */
